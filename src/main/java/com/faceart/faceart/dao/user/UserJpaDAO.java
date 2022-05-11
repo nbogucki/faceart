@@ -4,6 +4,8 @@ import com.faceart.faceart.entities.User;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @RequestScoped
 public class UserJpaDAO implements UserDAO{
 
@@ -13,10 +15,6 @@ public class UserJpaDAO implements UserDAO{
     public UserJpaDAO() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
         em = emf.createEntityManager();
-    }
-
-    @Override
-    public void addUser() {
     }
 
     @Override
@@ -43,6 +41,17 @@ public class UserJpaDAO implements UserDAO{
                         "WHERE u.email = :email")
                 .setParameter("email", email)
                 .getSingleResult();
+    }
+
+    public List getAll() {
+        return em.createQuery("SELECT u FROM User u")
+                .getResultList();
+    }
+
+    public void remove(User user) {
+        em.getTransaction().begin();
+        em.remove(user);
+        em.getTransaction().commit();
     }
 
     public void save(User user) {

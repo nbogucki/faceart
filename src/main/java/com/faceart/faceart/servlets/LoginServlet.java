@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath());
             return;
         }
+
         request.getRequestDispatcher("/sites/users/login.jsp").forward(request, response);
     }
 
@@ -30,6 +31,10 @@ public class LoginServlet extends HttpServlet {
             UserJpaDAO userJpaDAO = new UserJpaDAO();
             try {
                 User user = userJpaDAO.getUserByEmailAndPassword(emailInputValue, passwordInputValue);
+                if (!user.isActive()) {
+                    resp.sendRedirect(req.getContextPath());
+                    return;
+                }
                 req.getSession().setAttribute("user", user);
             } catch (NullPointerException e) {
                 resp.sendRedirect(req.getContextPath()+"/login");

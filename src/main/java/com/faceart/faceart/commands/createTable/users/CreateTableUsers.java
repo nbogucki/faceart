@@ -14,8 +14,11 @@ public class CreateTableUsers implements CreateTable {
                 "admin_second_name",
                 "admin@admin.com",
                 "adminPassword123",
-                "admin_address"
+                "admin_address",
+                true
                 );
+
+        user.addRole("ROLE_ADMIN");
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

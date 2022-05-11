@@ -4,9 +4,8 @@
 <head>
   <title>Register</title>
   <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/favicon.ico" />
-  <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
-  <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" />
   <link href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+  <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 <jsp:include page="../navigation.jsp" />
@@ -61,7 +60,7 @@
   </section>
 </section>
 <jsp:include page="../footer.jsp" />
-<script type="text/javascript" href="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" href="${pageContext.request.contextPath}/js/scripts.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/scripts.js"></script>
 </body>
 </html>
