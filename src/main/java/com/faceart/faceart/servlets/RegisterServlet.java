@@ -1,7 +1,6 @@
 package com.faceart.faceart.servlets;
 
 import java.io.IOException;
-
 import com.faceart.faceart.dao.user.UserJpaDAO;
 import com.faceart.faceart.entities.User;
 import jakarta.persistence.NoResultException;
@@ -35,30 +34,20 @@ public class RegisterServlet extends HttpServlet {
 
         if (registerButton.equals("true")) {
             UserJpaDAO userJpaDAO = new UserJpaDAO();
-            User user = new User();
             try {
-                user = userJpaDAO.getUserByEmail(emailInputValue);
+                User user = userJpaDAO.getUserByEmail(emailInputValue);
                 req.setAttribute("userExistInfo", "<h2 style='color:red'>User with this email actually exist</h2>");
             } catch (NoResultException e) {
-                if (!emailInputValue.equals("")) {
-                    user.setEmail(emailInputValue);
-                }
+                User user = new User(
+                        firstNameInput,
+                        secondNameInput,
+                        emailInputValue,
+                        passwordInputValue,
+                        addressInput,
+                        true
+                );
 
-                if (!passwordInputValue.equals("")) {
-                    user.setPassword(passwordInputValue);
-                }
-
-                if (!addressInput.equals("")) {
-                    user.setAddress(addressInput);
-                }
-
-                if (!firstNameInput.equals("")) {
-                    user.setFirstName(firstNameInput);
-                }
-
-                if (!secondNameInput.equals("")) {
-                    user.setSecondName(secondNameInput);
-                }
+                user.addRole("ROLE_USER");
 
                 userJpaDAO.save(user);
                 req.getSession().setAttribute("user", user);

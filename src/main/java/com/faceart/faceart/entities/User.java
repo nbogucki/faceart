@@ -2,6 +2,8 @@ package com.faceart.faceart.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -26,6 +28,16 @@ public class User {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @Column(name = "active", nullable = false)
+    private boolean active;
+
+    @ElementCollection
+    private ArrayList<String> roles;
+
+    @OneToMany( targetEntity=Product.class )
+    private ArrayList<Product> products;
+
+
     public User(){}
 
     public User(
@@ -33,13 +45,17 @@ public class User {
             String secondName,
             String email,
             String password,
-            String address
+            String address,
+            boolean active
     ) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
         this.password = password;
         this.address = address;
+        this.active = active;
+        this.roles = new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     public void setId(long id) {
@@ -93,5 +109,44 @@ public class User {
 
     public String getFullName() {
         return this.firstName+' '+this.secondName;
+    }
+
+    public ArrayList<String> getRoles()
+    {
+        return roles;
+    }
+
+    public void addRole(String role) {
+        roles.add(role);
+    }
+
+    public void deleteRole(String role) {
+        roles.remove(role);
+    }
+
+    public ArrayList<Product> getProducts()
+    {
+        return products;
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void deleteProduct(Product product) {
+        products.remove(product);
+    }
+
+    public boolean hasRole(String role)
+    {
+        return roles.contains(role);
+    }
+
+    public boolean isActive(){
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

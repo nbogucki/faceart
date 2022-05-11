@@ -5,6 +5,33 @@
          version="5.0">
 
     <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.IndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/faceart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShopServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.ShopServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShopServlet</servlet-name>
+        <url-pattern>/shop</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyProductsServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.MyProductsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyProductsServlet</servlet-name>
+        <url-pattern>/my-products</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.faceart.faceart.servlets.LoginServlet</servlet-class>
     </servlet>
@@ -29,5 +56,50 @@
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
         <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.AddProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProductServlet</servlet-name>
+        <url-pattern>/add-product</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.RemoveProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <url-pattern>/remove-product</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditProductServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.EditProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditProductServlet</servlet-name>
+        <url-pattern>/edit-product</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManageUsersServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.admin.ManageUsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageUsersServlet</servlet-name>
+        <url-pattern>/manage-users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowUserProductsServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.admin.ShowUserProductsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowUserProductsServlet</servlet-name>
+        <url-pattern>/show-user-products</url-pattern>
     </servlet-mapping>
 </web-app>
