@@ -8,6 +8,22 @@
     <link href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
     <style>
+        .watermarked {
+            position: relative;
+        }
+
+        .watermarked:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-image: url("https://www.nicepng.com/png/full/137-1376842_png-free-download-how-to-add-a-an.png");
+            background-size: 100px 100px;
+            background-position: 30px 30px;
+        }
 
         /*****************globals*************/
         body {
@@ -189,15 +205,15 @@
             <div class="wrapper row">
                 <div class="preview col-md-6">
                     <c:set var="count" value="0" scope="page" />
-                    <div class="preview-pic tab-content">
+                    <div class="preview-pic tab-content ">
                         <c:forEach items="${product.images}" var="image">
                             <c:set var="count" value="${count + 1}" scope="page"/>
                             <c:choose>
                                 <c:when test="${count=='1'}">
-                                    <div class="tab-pane active" id="pic-${count}"><img src="${image}" /></div>
+                                    <div class="tab-pane active watermarked" id="pic-${count}"><img src="${image}" /></div>
                                 </c:when>
                                 <c:otherwise>
-                                    <div class="tab-pane" id="pic-${count}"><img src="${image}" /></div>
+                                    <div class="tab-pane watermarked" id="pic-${count}"><img src="${image}" /></div>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
