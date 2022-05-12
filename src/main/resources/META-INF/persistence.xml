@@ -9,6 +9,7 @@
         <jta-data-source>faceart_database</jta-data-source>
         <class>com.faceart.faceart.entities.User</class>
         <class>com.faceart.faceart.entities.Product</class>
+        <class>com.faceart.faceart.entities.Favourite</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/faceart"/>

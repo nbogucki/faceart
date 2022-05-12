@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -34,6 +35,9 @@ public class Product {
 
     @Column(name = "createdAt", nullable = false)
     private LocalDateTime createdAt;
+
+    @ManyToMany(mappedBy = "products")
+    private List<Favourite> favourites;
 
     public Product(){}
 

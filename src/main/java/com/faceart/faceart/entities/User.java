@@ -37,7 +37,6 @@ public class User {
     @OneToMany( targetEntity=Product.class )
     private ArrayList<Product> products;
 
-
     public User(){}
 
     public User(

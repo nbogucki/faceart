@@ -102,4 +102,13 @@
         <servlet-name>ShowUserProductsServlet</servlet-name>
         <url-pattern>/show-user-products</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FavouritesServlet</servlet-name>
+        <servlet-class>com.faceart.faceart.servlets.users.FavouritesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FavouritesServlet</servlet-name>
+        <url-pattern>/favourites</url-pattern>
+    </servlet-mapping>
 </web-app>

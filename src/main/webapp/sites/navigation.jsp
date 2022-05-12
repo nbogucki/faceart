@@ -13,6 +13,11 @@
                     <a class="nav-link" id="shopSite" href="shop" role="button">Shop</a>
                 </li>
             </ul>
+            <a class="btn btn-outline-danger" href="favourites" role="button">
+                <i class="bi bi-heart"></i>
+                <span>Favourites</span>
+                <span class="badge bg-dark text-white ms-1 rounded-pill" id="favouriteCounter">${sessionScope.favourite.products.size()}</span>
+            </a>
             <form class="d-flex" style="margin: 0">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
