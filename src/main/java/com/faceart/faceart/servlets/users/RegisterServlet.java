@@ -1,4 +1,4 @@
-package com.faceart.faceart.servlets;
+package com.faceart.faceart.servlets.users;
 
 import java.io.IOException;
 import com.faceart.faceart.dao.user.UserJpaDAO;

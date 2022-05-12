@@ -1,4 +1,4 @@
-package com.faceart.faceart.servlets;
+package com.faceart.faceart.servlets.product;
 
 import com.faceart.faceart.dao.product.ProductJpaDAO;
 import com.faceart.faceart.entities.User;

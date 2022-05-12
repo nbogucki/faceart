@@ -8,6 +8,24 @@
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/favicon.ico" />
     <link href="${pageContext.request.contextPath}/assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
+    <style>
+        .watermarked {
+            position: relative;
+        }
+
+        .watermarked:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-image: url("https://www.nicepng.com/png/full/137-1376842_png-free-download-how-to-add-a-an.png");
+            background-size: 100px 100px;
+            background-position: 30px 30px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="navigation.jsp" />
@@ -28,7 +46,9 @@
                     <div class="card h-100">
                         <!-- Product image-->
                         <a href="product?id=${product.id}" style="text-decoration: none; color: black">
-                            <img class="card-img-top" src="${product.images[0]}" alt="..." />
+                            <div class="watermarked">
+                                <img class="card-img-top" src="${product.images[0]}" alt="..." />
+                            </div>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">

@@ -24,7 +24,7 @@
 
     <servlet>
         <servlet-name>MyProductsServlet</servlet-name>
-        <servlet-class>com.faceart.faceart.servlets.MyProductsServlet</servlet-class>
+        <servlet-class>com.faceart.faceart.servlets.product.MyProductsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyProductsServlet</servlet-name>
@@ -33,7 +33,7 @@
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.faceart.faceart.servlets.LoginServlet</servlet-class>
+        <servlet-class>com.faceart.faceart.servlets.users.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -42,7 +42,7 @@
 
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>com.faceart.faceart.servlets.LogoutServlet</servlet-class>
+        <servlet-class>com.faceart.faceart.servlets.users.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
@@ -51,7 +51,7 @@
 
     <servlet>
         <servlet-name>AccountServlet</servlet-name>
-        <servlet-class>com.faceart.faceart.servlets.AccountServlet</servlet-class>
+        <servlet-class>com.faceart.faceart.servlets.users.AccountServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
@@ -60,7 +60,7 @@
 
     <servlet>
         <servlet-name>AddProductServlet</servlet-name>
-        <servlet-class>com.faceart.faceart.servlets.AddProductServlet</servlet-class>
+        <servlet-class>com.faceart.faceart.servlets.product.AddProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddProductServlet</servlet-name>
@@ -69,7 +69,7 @@
 
     <servlet>
         <servlet-name>RemoveProductServlet</servlet-name>
-        <servlet-class>com.faceart.faceart.servlets.RemoveProductServlet</servlet-class>
+        <servlet-class>com.faceart.faceart.servlets.product.RemoveProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RemoveProductServlet</servlet-name>
@@ -78,7 +78,7 @@
 
     <servlet>
         <servlet-name>EditProductServlet</servlet-name>
-        <servlet-class>com.faceart.faceart.servlets.EditProductServlet</servlet-class>
+        <servlet-class>com.faceart.faceart.servlets.product.EditProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>EditProductServlet</servlet-name>

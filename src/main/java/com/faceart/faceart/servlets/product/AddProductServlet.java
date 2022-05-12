@@ -1,4 +1,4 @@
-package com.faceart.faceart.servlets;
+package com.faceart.faceart.servlets.product;
 
 import java.io.File;
 import java.io.IOException;
