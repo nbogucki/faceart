@@ -39,6 +39,9 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<Favourite> favourites;
 
+    @ManyToMany(mappedBy = "products")
+    private List<Cart> carts;
+
     public Product(){}
 
     public Product(
@@ -124,5 +127,33 @@ public class Product {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<Favourite> getFavourites() {
+        return favourites;
+    }
+
+    public void addFavourite(Favourite favourite) {
+        if (!this.favourites.contains(favourite)) {
+            this.favourites.add(favourite);
+        }
+    }
+
+    public void removeFavourite(Long favouriteId) {
+        this.favourites.removeIf(e -> e.getId() == favouriteId);
+    }
+
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void addCart(Cart cart) {
+        if (!this.carts.contains(cart)) {
+            this.carts.add(cart);
+        }
+    }
+
+    public void removeCart(Long cartId) {
+        this.carts.removeIf(e -> e.getId() == cartId);
     }
 }

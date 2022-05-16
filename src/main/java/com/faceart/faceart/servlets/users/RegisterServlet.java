@@ -1,6 +1,8 @@
 package com.faceart.faceart.servlets.users;
 
 import java.io.IOException;
+import com.faceart.faceart.dao.cart.CartJpaDAO;
+import com.faceart.faceart.entities.Cart;
 import com.faceart.faceart.dao.user.UserJpaDAO;
 import com.faceart.faceart.entities.User;
 import jakarta.persistence.NoResultException;
@@ -38,7 +40,20 @@ public class RegisterServlet extends HttpServlet {
                 User user = userJpaDAO.getUserByEmail(emailInputValue);
                 req.setAttribute("userExistInfo", "<h2 style='color:red'>User with this email actually exist</h2>");
             } catch (NoResultException e) {
+                long leftLimit = 1L;
+                long rightLimit = 10000L;
+                long generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+                boolean newId = false;
+                while (!newId) {
+                    if(userJpaDAO.getUserById(generatedLong) == null) {
+                        newId = true;
+                    } else {
+                        generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+                    }
+                }
+
                 User user = new User(
+                        generatedLong,
                         firstNameInput,
                         secondNameInput,
                         emailInputValue,
@@ -46,10 +61,18 @@ public class RegisterServlet extends HttpServlet {
                         addressInput,
                         true
                 );
-
                 user.addRole("ROLE_USER");
 
+                Cart cart = new Cart(generatedLong);
+                CartJpaDAO cartJpaDAO = new CartJpaDAO();
+                cartJpaDAO.save(cart);
+                user.setCart(cart);
+
                 userJpaDAO.save(user);
+
+                cart.setUser(user);
+                cartJpaDAO.save(cart);
+
                 req.getSession().setAttribute("user", user);
                 resp.sendRedirect(req.getContextPath());
                 return;

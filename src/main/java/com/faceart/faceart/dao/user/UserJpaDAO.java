@@ -1,5 +1,6 @@
 package com.faceart.faceart.dao.user;
 
+import com.faceart.faceart.entities.Product;
 import com.faceart.faceart.entities.User;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
@@ -19,7 +20,11 @@ public class UserJpaDAO implements UserDAO{
 
     @Override
     public User getUserById(long id) {
-        return em.find(User.class, id);
+        try{
+            return em.find(User.class, id);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public User getUserByEmailAndPassword(String email, String password) {
