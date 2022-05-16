@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="/WEB-INF/custom-functions.tld" prefix="fn" %>
 
 <html>
 <head>
@@ -228,12 +229,31 @@
                     </ul>
                 </div>
                 <div class="details col-md-6">
+                    <a href="user?id=${product.user.getId()}">${product.user.getFullName()}</a>
                     <h3 class="product-title">${product.title}</h3>
                     <p class="product-description">${product.description}</p>
                     <h4 class="price">current price: <span>${product.price}</span></h4>
                     <div class="action">
-                        <button class="add-to-cart btn btn-default" type="button">add to cart</button>
-                        <button class="like btn btn-default" type="button"><i class="bi bi-heart"></i></button>
+                        <input type="hidden" value="${product.id}" class="productsId">
+                        <c:choose>
+                            <c:when test="${fn:containsProductId( sessionScope.favourite.products, product.id )}">
+                                <div class="col text-center"><div class="btn btn-outline-danger mt-auto active" id="heart-${product.id}"><i class="bi bi-heart"></i></div></div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="col text-center"><div class="btn btn-outline-danger mt-auto" id="heart-${product.id}"><i class="bi bi-heart"></i></div></div>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:if test="${!sessionScope.user.equals(\"\") &&
+                            sessionScope.user != null}">
+                            <c:choose>
+                                <c:when test="${fn:containsProductId( sessionScope.user.cart.products, product.id )}">
+                                    <div class="col text-center"><div class="btn btn-outline-dark mt-auto active" id="cart-${product.id}">Remove From Cart</div></div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="col text-center"><div class="btn btn-outline-dark mt-auto" id="cart-${product.id}">Add to Cart</div></div>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                     </div>
                 </div>
             </div>

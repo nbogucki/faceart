@@ -18,13 +18,6 @@
                 <span>Favourites</span>
                 <span class="badge bg-dark text-white ms-1 rounded-pill" id="favouriteCounter">${sessionScope.favourite.products.size()}</span>
             </a>
-            <form class="d-flex" style="margin: 0">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
             <c:choose>
                 <c:when test="${sessionScope.user == '' || sessionScope.user == null}">
                     <a href="login" class="btn btn-outline-dark" role="button">
@@ -33,6 +26,11 @@
                     </a>
                 </c:when>
                 <c:otherwise>
+                    <a class="btn btn-outline-dark" role="button" href="cart">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill" id="cartCounter">${sessionScope.user.cart.products.size()}</span>
+                    </a>
                     <div class="dropdown">
                         <button class="btn btn-outline-dark dropdown-toggle" id="navbarDropdownLogin"
                             role="button" data-bs-toggle="dropdown"

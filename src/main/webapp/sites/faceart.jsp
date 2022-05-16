@@ -56,14 +56,13 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">${product.title}</h5>
                                     <!-- Product price-->
-                                        ${product.price}
+                                        ${product.price} zł
                                 </div>
                             </div>
                         </a>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent row">
                             <input type="hidden" value="${product.id}" class="productsId">
-                            <div class="col text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to Cart!</a></div>
                             <c:choose>
                                 <c:when test="${fn:containsProductId( sessionScope.favourite.products, product.id )}">
                                     <div class="col text-center"><div class="btn btn-outline-danger mt-auto active" id="heart-${product.id}"><i class="bi bi-heart"></i></div></div>
@@ -72,6 +71,17 @@
                                     <div class="col text-center"><div class="btn btn-outline-danger mt-auto" id="heart-${product.id}"><i class="bi bi-heart"></i></div></div>
                                 </c:otherwise>
                             </c:choose>
+                            <c:if test="${!sessionScope.user.equals(\"\") &&
+                            sessionScope.user != null}">
+                                <c:choose>
+                                    <c:when test="${fn:containsProductId( sessionScope.user.cart.products, product.id )}">
+                                        <div class="col text-center"><div class="btn btn-outline-dark mt-auto active" id="cart-${product.id}">Remove From Cart</div></div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="col text-center"><div class="btn btn-outline-dark mt-auto" id="cart-${product.id}">Add to Cart</div></div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:if>
                         </div>
                         <c:if test="${!sessionScope.user.equals(\"\") &&
                          sessionScope.user != null && sessionScope.user.hasRole(\"ROLE_ADMIN\")}">

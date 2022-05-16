@@ -10,7 +10,6 @@ public class User {
 
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "first_name", nullable = false)
@@ -37,9 +36,19 @@ public class User {
     @OneToMany( targetEntity=Product.class )
     private ArrayList<Product> products;
 
+    @OneToMany( targetEntity=Opinion.class )
+    private ArrayList<Opinion> opinions;
+
+    @OneToMany( targetEntity=Comment.class )
+    private ArrayList<Comment> comments;
+
+    @OneToOne
+    private Cart cart;
+
     public User(){}
 
     public User(
+            Long id,
             String firstName,
             String secondName,
             String email,
@@ -47,6 +56,7 @@ public class User {
             String address,
             boolean active
     ) {
+        this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
@@ -147,5 +157,39 @@ public class User {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public ArrayList<Opinion> getOpinions()
+    {
+        return opinions;
+    }
+
+    public void addOpinion(Opinion opinion) {
+        opinions.add(opinion);
+    }
+
+    public void deleteOpinion(Opinion opinion) {
+        opinions.remove(opinion);
+    }
+
+    public ArrayList<Comment> getComments()
+    {
+        return comments;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    public void deleteComment(Comment comment) {
+        comments.remove(comment);
     }
 }
