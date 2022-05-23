@@ -15,9 +15,9 @@
         <class>com.faceart.faceart.entities.Comment</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/faceart"/>
-            <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:55000/faceart"/>
+            <property name="jakarta.persistence.jdbc.user" value="faceart"/>
+            <property name="jakarta.persistence.jdbc.password" value="faceart"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
         </properties>
     </persistence-unit>
